@@ -81,8 +81,8 @@ class UserServiceImplTest {
 
     @Test
     void deleteUser() {
-        Response response = userService.deleteUser(20);
-        Response response2 = userService.deleteUser(21);
+        Response response = userService.deleteUser(10);
+//        Response response2 = userService.deleteUser(8);
         System.out.println(response);
         assertEquals("User deleted", response.getMessage());
     }

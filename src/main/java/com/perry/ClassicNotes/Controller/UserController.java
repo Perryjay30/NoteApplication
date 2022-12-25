@@ -1,5 +1,6 @@
 package com.perry.ClassicNotes.Controller;
 
+import com.perry.ClassicNotes.Data.dto.Request.LoginRequest;
 import com.perry.ClassicNotes.Data.dto.Request.UpdateRequest;
 import com.perry.ClassicNotes.Data.dto.Request.UserRegistrationRequest;
 import com.perry.ClassicNotes.Service.UserService;
@@ -23,13 +24,18 @@ public class UserController {
                 .body(userService.register(userRegistrationRequest));
     }
 
+    @GetMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        return ResponseEntity.ok(userService.login(loginRequest));
+    }
+
     @GetMapping
     public ResponseEntity<?> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUserFromDb());
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> deleteUserById(@RequestParam int id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUserById(@PathVariable int id) {
         return ResponseEntity.ok(userService.deleteUser(id));
     }
 

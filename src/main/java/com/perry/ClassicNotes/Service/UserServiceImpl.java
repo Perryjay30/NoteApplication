@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException(String.format("Email address %s is invalid", userRegistrationRequest.getEmail()));
 
         if(!UserDetailsValidators.isValidPhoneNumber(userRegistrationRequest.getPhoneNumber()))
-            throw new RuntimeException(String.format("Please, Enter a valid Phone Number", userRegistrationRequest.getPhoneNumber()));
+            throw new RuntimeException("Please, Enter a valid Phone Number");
 
         User user = newUser(userRegistrationRequest);
 

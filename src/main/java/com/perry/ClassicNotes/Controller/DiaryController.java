@@ -26,8 +26,8 @@ public class DiaryController {
         return ResponseEntity.ok(diaryService.updateDiary(updateDiaryRequest));
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> deleteDiary(int id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteDiary(@PathVariable int id) {
         return ResponseEntity.ok(diaryService.deleteDiary(id));
     }
 }

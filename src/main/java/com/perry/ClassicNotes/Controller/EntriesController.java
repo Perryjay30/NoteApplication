@@ -31,8 +31,8 @@ public class EntriesController {
         return ResponseEntity.ok(entriesService.retrieveEntries(retrieveRequest));
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> deleteEntries(int id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteEntries(@PathVariable int id) {
         return ResponseEntity.ok(entriesService.deleteEntries(id));
     }
 
