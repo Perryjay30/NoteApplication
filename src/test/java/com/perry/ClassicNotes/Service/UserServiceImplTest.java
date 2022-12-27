@@ -27,7 +27,7 @@ class UserServiceImplTest {
     @BeforeEach
     void setUp() {
         registerFirstUserRequest = new UserRegistrationRequest();
-        registerFirstUserRequest.setEmail("testing@gmail.com");
+        registerFirstUserRequest.setEmail("testinggale@gmail.com");
         registerFirstUserRequest.setPassword("Icanregister@30");
         registerFirstUserRequest.setPhoneNumber("09134568971");
 
@@ -41,14 +41,13 @@ class UserServiceImplTest {
     void register() {
         UserRegistrationResponse response =
                 userService.register(registerFirstUserRequest);
-        UserRegistrationResponse response1 =
-                userService.register(registerSecondUserRequest);
+//        UserRegistrationResponse response1 =
+//                userService.register(registerSecondUserRequest);
         assertNotNull(response);
-        assertNotNull(response1);
         System.out.println(response);
-        System.out.println(response1);
+//        System.out.println(response1);
         assertEquals(201, response.getStatusCode());
-        assertEquals(201, response1.getStatusCode());
+//        assertEquals(201, response1.getStatusCode());
     }
 
     @Test
@@ -85,6 +84,12 @@ class UserServiceImplTest {
 //        Response response2 = userService.deleteUser(8);
         System.out.println(response);
         assertEquals("User deleted", response.getMessage());
+    }
+
+    @Test
+    void deleteAllUserFromDb() {
+        Response response = userService.deleteAllUsers();
+        assertEquals("You have deleted all users", response.getMessage());
     }
 
 }

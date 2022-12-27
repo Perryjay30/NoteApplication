@@ -17,4 +17,6 @@ public interface UserService {
    Response deleteUser(int id);
    List<User> getAllUserFromDb();
    Response updateUser(UpdateRequest updateRequest);
+
+   Response deleteAllUsers();
 }

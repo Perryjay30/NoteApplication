@@ -34,7 +34,6 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Please, Enter a valid Phone Number");
 
         User user = newUser(userRegistrationRequest);
-
         User savedUser = userRepository.save(user);
 
         return newUserRegistrationResponse(savedUser);
@@ -51,9 +50,15 @@ public class UserServiceImpl implements UserService {
 
     private User newUser(UserRegistrationRequest userRegistrationRequest) {
         User user = new User();
-        user.setEmail(userRegistrationRequest.getEmail());
+       if(userRepository.findUserByEmail(userRegistrationRequest.getEmail()).isPresent())
+            throw new RuntimeException("This email has been taken, kindly register with another email address");
+        else
+            user.setEmail(userRegistrationRequest.getEmail());
         user.setPassword(userRegistrationRequest.getPassword());
-        user.setPhoneNumber(userRegistrationRequest.getPhoneNumber());
+        if(userRepository.findByPhoneNumber(userRegistrationRequest.getPhoneNumber()).isPresent())
+            throw new RuntimeException("This Phone Number has been taken, kindly use another");
+        else
+            user.setPhoneNumber(userRegistrationRequest.getPhoneNumber());
         return user;
     }
 
@@ -61,7 +66,6 @@ public class UserServiceImpl implements UserService {
     public LoginResponse login(LoginRequest loginRequest) {
         User registeredUser = userRepository.findUserByEmail(loginRequest.getEmail())
                 .orElseThrow(() -> new RuntimeException("User not found"));
-//        User registeredUser = new User();
 
         LoginResponse loginResponse = new LoginResponse();
         if (registeredUser.getPassword().equals(loginRequest.getPassword())) {
@@ -90,6 +94,12 @@ public class UserServiceImpl implements UserService {
         if(user.isEmpty()) throw new RuntimeException("User not found");
         UpdateRegisteredUser(updateRequest, user);
         return new Response("user details update successfully");
+    }
+
+    @Override
+    public Response deleteAllUsers() {
+        userRepository.deleteAll();
+        return new Response("You have deleted all users");
     }
 
     private void UpdateRegisteredUser(UpdateRequest updateRequest, Optional<User> user) {
