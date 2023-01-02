@@ -1,6 +1,7 @@
 package com.perry.ClassicNotes.Controller;
 
 import com.perry.ClassicNotes.Data.dto.Request.CreateRequest;
+import com.perry.ClassicNotes.Data.dto.Request.EntriesRequest;
 import com.perry.ClassicNotes.Data.dto.Request.UpdateDiaryRequest;
 import com.perry.ClassicNotes.Service.DiaryService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,5 +30,10 @@ public class DiaryController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteDiary(@PathVariable int id) {
         return ResponseEntity.ok(diaryService.deleteDiary(id));
+    }
+
+    @PostMapping("/addEntries")
+    public ResponseEntity<?> addEntryToDiary(@RequestBody EntriesRequest entriesRequest) {
+        return ResponseEntity.ok(diaryService.addEntryToDiary(entriesRequest));
     }
 }
