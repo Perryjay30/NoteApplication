@@ -1,4 +1,4 @@
-package com.perry.ClassicNotes.validators;
+package com.perry.ClassicNotes.utils.validators;
 
 public class UserEntryValidators {
 

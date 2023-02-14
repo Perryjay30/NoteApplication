@@ -8,7 +8,7 @@ import com.perry.ClassicNotes.data.dto.response.EntryRetrievalResponse;
 import com.perry.ClassicNotes.data.dto.response.Response;
 import com.perry.ClassicNotes.data.dto.request.RetrieveRequest;
 import com.perry.ClassicNotes.data.dto.response.WriteResponse;
-import com.perry.ClassicNotes.validators.UserEntryValidators;
+import com.perry.ClassicNotes.utils.validators.UserEntryValidators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
