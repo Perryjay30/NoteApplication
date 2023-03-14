@@ -18,7 +18,7 @@ class RegistrationServiceImplTest {
         UserRegistrationRequest registrationRequest = new UserRegistrationRequest();
         registrationRequest.setFirstName("Brianna");
         registrationRequest.setLastName("Stones");
-        registrationRequest.setEmail("stonbries@yahoo.com");
+        registrationRequest.setEmail("mrjesus3003@gmail.com");
         registrationRequest.setPassword("Juststones&11");
         String response =
                 registrationService.register(registrationRequest);

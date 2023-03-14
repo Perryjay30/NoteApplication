@@ -4,10 +4,10 @@ server:
   port: 8082
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/Classicdiary_db?createDatabaseIfNotExist=true
+    url: ${DATABASE_URL}
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: Oluwapelumi
+    username: ${USERNAME}
+    password: ${PASSWORD}
 
   jpa:
     hibernate:
@@ -17,21 +17,23 @@ spring:
 
 
   mail:
-    host: localhost
-    port: 1025
-    username: hello
-    password: hello
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
-          ssl:
-            trust: "*"
+#          ssl:
+#            trust: "*"
           auth: true
           starttls:
             enable: true
           connectiontimeout: 5000
           timeout: 3000
           writetimeout: 5000
+          ssl:
+            enable: true
 
 
 

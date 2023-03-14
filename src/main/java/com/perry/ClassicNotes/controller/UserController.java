@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @GetMapping("/forgotPassword")
-    public ResponseEntity<?> forgotPassword(@Valid @RequestBody ForgotPasswordRequest forgotPasswordRequest) throws MessagingException, MessagingException {
+    public ResponseEntity<?> forgotPassword(@Valid @RequestBody ForgotPasswordRequest forgotPasswordRequest) throws MessagingException {
         return ResponseEntity.ok(userService.forgotPassword(forgotPasswordRequest));
     }
 
